@@ -2,7 +2,7 @@
 
 import React, { useCallback, useRef, useState } from "react";
 import { getQueryClient } from "@sei-js/core";
-import { HdPath, stringToPath } from "@cosmjs/crypto";
+// import { HdPath, stringToPath } from "@cosmjs/crypto";
 import { getNetworkInfo, Network } from "@injectivelabs/networks";
 
 import {
@@ -10,14 +10,14 @@ import {
   PrivateKey,
   TxClient,
   TxGrpcClient,
-  DEFAULT_STD_FEE,
+  // DEFAULT_STD_FEE,
   ChainRestAuthApi,
   createTransaction,
 } from "@injectivelabs/sdk-ts";
 import { BigNumberInBase } from "@injectivelabs/utils";
+// import { BigNumber } from "bignumber.js";
 
 const network = getNetworkInfo(Network.Mainnet);
-
 
 const Minter: React.FC = () => {
   const [mnemonic, setMnemonic] = useState<string>("");
@@ -51,7 +51,15 @@ const Minter: React.FC = () => {
       const { signBytes, txRaw } = createTransaction({
         message: msg,
         memo: "",
-        fee: DEFAULT_STD_FEE,
+        fee: {
+          amount: [
+            {
+              amount: '2000000000000000',
+              denom: "inj",
+            },
+          ],
+          gas: "400000",
+        },
         pubKey: publicKey,
         sequence: parseInt(accountDetails.account.base_account.sequence, 10),
         accountNumber: parseInt(
