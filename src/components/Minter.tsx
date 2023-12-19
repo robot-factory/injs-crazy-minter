@@ -50,7 +50,7 @@ const Minter: React.FC = () => {
 
       const { signBytes, txRaw } = createTransaction({
         message: msg,
-        memo: 'ZGF0YToseyJwIjoiaW5qcmMtMjAiLCJvcCI6ImRlcGxveSIsInRpY2siOiJJTkpTIiwibWF4IjoiMTAwMDAwMDAwMCIsImxpbSI6IjIwMDAifQ==',
+        memo: btoa(`data:,{"p":"injrc-20","op":"mint","tick":"INJS","amt":"2000"}`),
         fee: {
           amount: [
             {
