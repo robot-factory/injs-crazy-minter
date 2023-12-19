@@ -29,7 +29,7 @@ export default function Home() {
           <span className="underline">关注科学家</span>
         </Link>
         <Link
-          href={`https://github.com/BohengLiu/cia20-super-minter`}
+          href={`https://github.com/BohengLiu/injs-crazy-minter`}
           target="_blank"
           className="flex items-center justify-center"
         >
