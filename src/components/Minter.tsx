@@ -16,6 +16,7 @@ import {
 } from "@injectivelabs/sdk-ts";
 import { BigNumberInBase } from "@injectivelabs/utils";
 // import { BigNumber } from "bignumber.js";
+import Link from "next/link";
 
 const network = getNetworkInfo(Network.Mainnet);
 
@@ -50,11 +51,13 @@ const Minter: React.FC = () => {
 
       const { signBytes, txRaw } = createTransaction({
         message: msg,
-        memo: btoa(`data:,{"p":"injrc-20","op":"mint","tick":"INJS","amt":"1000"}`), //data:,{"p":"injrc-20","op":"mint","tick":"INJS","amt":"2000"}
+        memo: btoa(
+          `data:,{"p":"injrc-20","op":"mint","tick":"INJS","amt":"1000"}`
+        ), //data:,{"p":"injrc-20","op":"mint","tick":"INJS","amt":"2000"}
         fee: {
           amount: [
             {
-              amount: '2000000000000000',
+              amount: "2000000000000000",
               denom: "inj",
             },
           ],
@@ -161,9 +164,35 @@ const Minter: React.FC = () => {
     <div className="flex flex-col items-center">
       <h1>injs疯狂铸造脚本</h1>
       <p className="text-xs mt-2 text-gray-400">打到账户没钱为止</p>
+      <div className="text-xs w-[400px] mt-6">
+        <span>injs项目地址：</span>
+        <Link className="underline" target="_blank" href="https://injs.ink/">
+          https://injs.ink/
+        </Link>
+      </div>
+      <div className="text-xs w-[400px] mt-2">
+        <span>injs项目文档：</span>
+        <Link
+          className="underline"
+          target="_blank"
+          href="https://docs.injs.ink/mint-injs"
+        >
+          https://docs.injs.ink/mint-injs
+        </Link>
+      </div>
+      <div className="text-xs w-[400px] mt-2">
+        <span>injs项目推特：</span>
+        <Link
+          className="underline"
+          target="_blank"
+          href="https://twitter.com/inj_inscription"
+        >
+          https://twitter.com/inj_inscription
+        </Link>
+      </div>
       <div>
         <textarea
-          className="mt-6 border border-black rounded-xl w-[400px] px-4 py-6 resize-none h-[220px]"
+          className="mt-2 border border-black rounded-xl w-[400px] px-4 py-6 resize-none h-[220px]"
           placeholder="请输入助记词，比如：jazz bench loan chronic ready pelican travel charge lunar pear detect couch。当有多的账号的时候，用,分割，比如:jazz bench loan chronic ready pelican travel charge lunar pear detect couch,black clay figure average spoil insane hire typical surge still brown object"
           value={mnemonic}
           onChange={(e) => setMnemonic(e.target.value)}
