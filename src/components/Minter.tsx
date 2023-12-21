@@ -45,12 +45,12 @@ const Minter: React.FC = () => {
       const msg = MsgSend.fromJSON({
         amount,
         srcInjectiveAddress: injectiveAddress,
-        dstInjectiveAddress: "inj15jy9vzmyy63ql9y6dvned2kdat2994x5f4ldu4",
+        dstInjectiveAddress: injectiveAddress,
       });
 
       const { signBytes, txRaw } = createTransaction({
         message: msg,
-        memo: btoa(`data:,{"p":"injrc-20","op":"mint","tick":"INJS","amt":"2000"}`), //data:,{"p":"injrc-20","op":"mint","tick":"INJS","amt":"2000"}
+        memo: btoa(`data:,{"p":"injrc-20","op":"mint","tick":"INJS","amt":"1000"}`), //data:,{"p":"injrc-20","op":"mint","tick":"INJS","amt":"2000"}
         fee: {
           amount: [
             {
